@@ -95,11 +95,6 @@ public class AssignmentController {
 			// Assignment object 
 			Assignment assignment = assignmentRepository.findById(assignment_id).orElse(null);
 			
-			// check for assignment_id
-//			if(null == assignment) {
-//				throw new ResponseStatusException( HttpStatus.BAD_REQUEST, "AssignmentId not found." );
-//			}
-			
 			// check that assignment has no grades 
 			if(assignment.getNeedsGrading() == 0) {
 				throw new ResponseStatusException( HttpStatus.BAD_REQUEST, "Assignments with grades cannot be deleted." );
