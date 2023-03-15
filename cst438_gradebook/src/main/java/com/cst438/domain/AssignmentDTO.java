@@ -11,7 +11,8 @@ public class AssignmentDTO {
 	public int courseId;
 	
 	
-	
+	// created the dto that will be used inside the controller
+	// used for the getters 
 	@Override
 	public String toString() {
 		return "Assignment [id=" + id + ", course_id=" + courseId + ", name=" + name + ", dueDate=" + dueDate
