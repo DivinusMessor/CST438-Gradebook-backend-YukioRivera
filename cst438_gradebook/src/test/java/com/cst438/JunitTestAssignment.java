@@ -73,6 +73,7 @@ class JunitTestAssignment {
 	@Autowired
 	private MockMvc mvc;
 	
+	// test to check if assignment is created 
 	@Test
 	void createAssignment() throws Exception{
 		MockHttpServletResponse response;
@@ -86,8 +87,6 @@ class JunitTestAssignment {
 		assignment.setId(TEST_ASSIGNMENT_ID);
 		assignment.setCourse(course);
 		assignment.setDueDate(TEST_DUE_DATE);
-	
-//		given(assignmentRepository.findById(TEST_ASSIGNMENT_ID)).willReturn(Optional.of(assignment)); // given wrong into to make sure it checks
 		
 		given(courseRepository.findById(TEST_COURSE_ID)).willReturn(Optional.of(course)); // simulate when rest goes to testdb and tries to get course
 		
@@ -102,16 +101,13 @@ class JunitTestAssignment {
 		
 		AssignmentDTO assignmentDTO = fromJsonString(response.getContentAsString(), AssignmentDTO.class);
 		assertEquals(TEST_ASSIGNMENT_ID, assignmentDTO.id);
-//        boolean found = false;
-//        if(assignmentDTO.id == (TEST_ASSIGNMENT_ID)) {
-//            found = true;
-//        }
-//        assertEquals(true, found, "Assignment not found");
+
         verify(assignmentRepository, times(1)).save(any());
-//
+
         System.out.println(assignmentDTO);	
 	}
 	
+	// test to see if assignment can be updated
 	@Test
 	void updateAssignment() throws Exception{
 		MockHttpServletResponse response;
@@ -144,6 +140,7 @@ class JunitTestAssignment {
         System.out.println(assignmentDTO);	
 	}
 	
+	// test to see if assignment can be deleted 
 	@Test
 	void deleteAssignment() throws Exception{
 		MockHttpServletResponse response;
