@@ -20,7 +20,11 @@ public class RegistrationServiceREST extends RegistrationService {
 	@Override
 	public void sendFinalGrades(int course_id , CourseDTOG courseDTO) { 
 		
-		//TODO  complete this method in homework 4
-		
+		// Print a message indicating the beginning of the process of sending final grades
+		System.out.println("Sending file grades " +course_id+" "+courseDTO);
+		// Use the restTemplate to perform an HTTP PUT request to update the course with final grades
+		restTemplate.put(registration_url+"/course/"+course_id, courseDTO);
+		// Print a message indicating the completion of sending final grades
+		System.out.println("After sending final grades");
 	}
 }
